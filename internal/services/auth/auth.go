@@ -8,7 +8,7 @@ import (
 	"log/slog"
 	"sso/internal/domain/models"
 	"sso/internal/lib/jwt"
-	"sso/internal/services/storage"
+	"sso/internal/storage"
 	"time"
 )
 

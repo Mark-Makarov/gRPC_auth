@@ -1,6 +1,9 @@
 # gRPC_auth
 
 ### protogen
-- go to https://github.com/Mark-Makarov/gRPC_auth_protobuffs
+run `go get github.com/Mark-Makarov/gRPC_auth_protobuffs`
+
+### migrations
+run `task migrations`
 
 ### docker
