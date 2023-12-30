@@ -26,7 +26,7 @@ type UserSaver interface {
 
 type UserProvider interface {
 	User(ctx context.Context, email string) (user models.User, err error)
-	isAdmin(ctx context.Context, userId int64) (bool, error)
+	IsAdmin(ctx context.Context, userId int64) (bool, error)
 }
 
 type AppProvider interface {
@@ -131,8 +131,8 @@ func (a *Auth) Register(
 	return id, nil
 }
 
-func (a *Auth) isAdmin(ctx context.Context, userId int64) (bool, error) {
-	const op = "auth.isAdmin"
+func (a *Auth) IsAdmin(ctx context.Context, userId int64) (bool, error) {
+	const op = "auth.IsAdmin"
 
 	log := a.log.With(
 		slog.String("op", op),
@@ -141,7 +141,7 @@ func (a *Auth) isAdmin(ctx context.Context, userId int64) (bool, error) {
 
 	log.Info("checking if user is admin")
 
-	isAdmin, err := a.usrProvider.isAdmin(ctx, userId)
+	isAdmin, err := a.usrProvider.IsAdmin(ctx, userId)
 	if err != nil {
 		if errors.Is(err, storage.ErrAppNotFound) {
 			log.Warn("user not found")

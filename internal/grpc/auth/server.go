@@ -11,7 +11,7 @@ import (
 type Auth interface {
 	Login(ctx context.Context, email string, password string, appId int) (token string, err error)
 	Register(ctx context.Context, email string, password string) (userId int64, err error)
-	isAdmin(ctx context.Context, userId int64) (bool, error)
+	IsAdmin(ctx context.Context, userId int64) (bool, error)
 }
 
 type serverAPI struct {
@@ -67,7 +67,7 @@ func (s *serverAPI) IsAdmin(
 		return nil, status.Error(codes.InvalidArgument, "missing argument")
 	}
 
-	isAdmin, err := s.auth.isAdmin(ctx, req.GetUserId())
+	isAdmin, err := s.auth.IsAdmin(ctx, req.GetUserId())
 	if err != nil {
 		return nil, status.Error(codes.Internal, "internal error")
 	}

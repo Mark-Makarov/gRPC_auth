@@ -21,14 +21,14 @@ func main() {
 	log.Info("app started on port", slog.Int("port", cfg.GRPC.Port))
 
 	application := app.New(log, cfg.GRPC.Port, cfg.StoragePath, cfg.TokenTTL)
-	application.GRPCSrv.MustRun()
+	application.GRPCServer.MustRun()
 
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
 
 	sign := <-stop
 
-	application.GRPCSrv.Stop()
+	application.GRPCServer.Stop()
 	log.Info("app stopped, reason: ", slog.String("sign", sign.String()))
 }
 
