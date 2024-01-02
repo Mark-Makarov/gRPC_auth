@@ -11,7 +11,7 @@ run `task dev`
 
 ### run tests
  - tests DB migrations: run `test-migrations`
- - app tests: run `task run-dev` && `task tests`
+ - app tests: run `task dev` && `task tests`
 
 ### docker
 run `task docker`
