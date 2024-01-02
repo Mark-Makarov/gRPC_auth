@@ -7,6 +7,11 @@ run `go get github.com/Mark-Makarov/gRPC_auth_protobuffs`
 run `task migrations`
 
 ### run dev build
-run `task run-dev`
+run `task dev`
+
+### run tests
+ - tests DB migrations: run `test-migrations`
+ - app tests: run `task run-dev` && `task tests`
 
 ### docker
+run `task docker`
